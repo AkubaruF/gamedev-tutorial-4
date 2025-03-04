@@ -78,3 +78,6 @@ frame = 2
 libraries = {
 "": SubResource("AnimationLibrary_sbh6e")
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)

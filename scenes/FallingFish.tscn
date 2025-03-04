@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://p2mqx8cie31g"]
+
+[ext_resource type="Texture2D" uid="uid://bivk5n8i3vnqc" path="res://assets/kenney_platformerpack/PNG/Enemies/fishBlue.png" id="1_fjwii"]
+[ext_resource type="Script" path="res://scenes/ObstacleTrigger.gd" id="2_4v32i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yufm8"]
+size = Vector2(95, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5yav"]
+size = Vector2(83, 108)
+
+[node name="FallingFish" type="RigidBody2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_4v32i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_yufm8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fjwii")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_s5yav")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

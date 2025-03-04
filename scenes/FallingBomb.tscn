@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmb5c60gg64le"]
+
+[ext_resource type="Script" path="res://scenes/ObstacleTrigger.gd" id="1_mxb2u"]
+[ext_resource type="Texture2D" uid="uid://bj7p6binvtp2i" path="res://assets/kenney_platformerpack/PNG/Tiles/bomb.png" id="1_njhfl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4oetx"]
+size = Vector2(115, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhuul"]
+size = Vector2(109, 119)
+
+[node name="FallingBomb" type="RigidBody2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_mxb2u")
+obstacleName = "FallingBomb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 8)
+shape = SubResource("RectangleShape2D_4oetx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_njhfl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 7.5)
+shape = SubResource("RectangleShape2D_uhuul")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://354pmchmhcwn"]
+[gd_scene load_steps=10 format=4 uid="uid://354pmchmhcwn"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1_le5ys"]
 [ext_resource type="Texture2D" uid="uid://76hi8rt1miuo" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_grass.png" id="2_ch4n4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cepkgjavrukcj" path="res://scenes/AreaTrigger.tscn" id="4_mw1cs"]
 [ext_resource type="Script" path="res://scenes/spawner.gd" id="5_bqhgd"]
 [ext_resource type="PackedScene" uid="uid://bmb5c60gg64le" path="res://scenes/FallingBomb.tscn" id="6_tcaot"]
+[ext_resource type="PackedScene" uid="uid://dpctep0r3fn8k" path="res://scenes/LifeCounter.tscn" id="7_w0ccs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvrj5"]
 texture = ExtResource("2_ch4n4")
@@ -1018,3 +1019,7 @@ sceneName = "Level2"
 position = Vector2(820, -645)
 script = ExtResource("5_bqhgd")
 obstacle = ExtResource("6_tcaot")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" parent="CanvasLayer" instance=ExtResource("7_w0ccs")]

@@ -7,7 +7,6 @@ func _ready():
 
 func spawn():
 	var spawned = obstacle.instantiate()
-	print("Spawned " + spawned.to_string())
 	get_parent().add_child.call_deferred(spawned)
 
 	var spawn_pos = global_position

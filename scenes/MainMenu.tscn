@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmekos3lwkw65"]
+
+[ext_resource type="Texture2D" uid="uid://d25o0wfdi57sp" path="res://assets/kenney_platformerpack/PNG/Backgrounds/colored_shroom.png" id="1_bhron"]
+[ext_resource type="Texture2D" uid="uid://bj2aew56l2i28" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Pink/alienPink_front.png" id="2_4f3mn"]
+[ext_resource type="Script" path="res://scenes/link_button.gd" id="2_qp7ck"]
+[ext_resource type="Script" path="res://scenes/StageSelect.gd" id="3_454fo"]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColoredShroom" type="Sprite2D" parent="."]
+position = Vector2(567, 274)
+scale = Vector2(1.14941, 1)
+texture = ExtResource("1_bhron")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Jumping Space"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.203922, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "New Game"
+script = ExtResource("2_qp7ck")
+scene_to_load = "Level1"
+
+[node name="LinkButton2" type="LinkButton" parent="VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("levelsContainer")]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.203922, 0.501961, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.337255, 0.686275, 0.713726)
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "Stage Select"
+script = ExtResource("3_454fo")
+levelsContainer = NodePath("../VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="LinkButton5" type="LinkButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.203922, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Level 1"
+script = ExtResource("2_qp7ck")
+scene_to_load = "Level1"
+
+[node name="LinkButton6" type="LinkButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.203922, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Level 2"
+script = ExtResource("2_qp7ck")
+scene_to_load = "Level2"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_4f3mn")
+stretch_mode = 4
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/LinkButton" to="VBoxContainer/HBoxContainer/VBoxContainer/LinkButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/LinkButton2" to="VBoxContainer/HBoxContainer/VBoxContainer/LinkButton2" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/LinkButton5" to="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/LinkButton5" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/LinkButton6" to="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/LinkButton6" method="_on_pressed"]
